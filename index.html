@@ -49,30 +49,41 @@ html,body{
     box-shadow: inset 0 0 60px rgba(255,255,255,.08), inset 0 0 200px black;
 }
 
-/* VIDEO */
-#player{
+/* lichte bolling */
+#screen:before{
+    content:"";
     position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    z-index:1;
-}
-
-/* EXIT-LAAG */
-#exitLayer{
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    z-index:5;
+    left:-3%;
+    top:-3%;
+    width:106%;
+    height:106%;
+    background: radial-gradient(circle,transparent 60%,rgba(255,255,255,.10));
     pointer-events:none;
+    z-index:20;
 }
 
-.fullscreen-active #exitLayer{
-    pointer-events:auto;
-    cursor:pointer;
+/* scanlines */
+#screen:after{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background: repeating-linear-gradient(to bottom,rgba(255,255,255,.02) 0px,rgba(255,255,255,.02) 2px,transparent 3px,transparent 5px);
+    pointer-events:none;
+    z-index:15;
+}
+
+/* VIDEO */
+iframe{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    border:none;
+    z-index:1;
 }
 
 /* COVER */
@@ -113,10 +124,12 @@ html,body{
     font-size:28px;
     font-weight:bold;
     letter-spacing:3px;
+    text-shadow:0 0 5px rgba(120,60,60,.4);
 }
 
 #live{
     color:#E35335;
+    text-shadow:none;
 }
 
 /* LED */
@@ -141,7 +154,7 @@ html,body{
     justify-content:center;
     gap:20px;
     z-index:35;
-    transition:.3s;
+    transition:.4s;
 }
 
 button{
@@ -157,6 +170,16 @@ button{
     transition:.2s;
 }
 
+button:hover{
+    transform:translateY(-2px);
+    background:#7a7a7a;
+}
+
+button:active{
+    transform:translateY(2px);
+    background:#555;
+}
+
 /* INFO */
 #info{
     position:absolute;
@@ -166,12 +189,7 @@ button{
     font-size:22px;
     font-family:Courier New;
     z-index:35;
-}
-
-/* VERBERG */
-.hidden{
-    opacity:0;
-    pointer-events:none;
+    text-shadow:0 0 8px #00ff99;
 }
 
 </style>
@@ -184,26 +202,30 @@ button{
 
     <div id="screen">
 
+        <!-- Bovenbalk -->
         <div id="topbar">
             <div><span id="live">OLD DUTCH SONGS</span></div>
             <div id="counter">1 / 16</div>
         </div>
 
+        <!-- Cover -->
         <div id="cover">
             <img src="OLD100.jpg" alt="OLD100">
         </div>
 
+        <!-- YouTube -->
         <div id="player"></div>
 
-        <div id="exitLayer"></div>
-
+        <!-- Info -->
         <div id="info">Wim Sonneveld - Tearoom tango</div>
 
+        <!-- Knoppen -->
         <div id="controls">
             <button id="playBtn">PLAY</button>
             <button id="nextBtn">NEXT ▶</button>
         </div>
 
+        <!-- LED -->
         <div id="led"></div>
 
     </div>
@@ -216,7 +238,6 @@ button{
 
 let player;
 let playing=false;
-let fullscreen=false;
 
 const playlist=[
 {id:"ux55xgGqwHk",title:"Tearoom tango"},
@@ -270,38 +291,9 @@ function nextVideo(){
     updateInfo();
     player.playVideo();
     playing=true;
-
-    /* ⭐ FULLSCREEN FIX: fullscreen blijft actief */
-    if(fullscreen){
-        enterFullscreen();
-    }
 }
 
-/* Fullscreen aan */
-function enterFullscreen(){
-    document.getElementById("screen").classList.add("fullscreen-active");
-
-    document.getElementById("topbar").classList.add("hidden");
-    document.getElementById("info").classList.add("hidden");
-    document.getElementById("controls").classList.add("hidden");
-    document.getElementById("cover").classList.add("hidden");
-    document.getElementById("led").classList.add("hidden");
-}
-
-/* Fullscreen uit */
-function exitFullscreen(){
-    document.getElementById("screen").classList.remove("fullscreen-active");
-
-    document.getElementById("topbar").classList.remove("hidden");
-    document.getElementById("info").classList.remove("hidden");
-    document.getElementById("controls").classList.remove("hidden");
-    document.getElementById("cover").classList.remove("hidden");
-    document.getElementById("led").classList.remove("hidden");
-}
-
-document.getElementById("playBtn").onclick=function(event){
-
-    event.stopPropagation();
+document.getElementById("playBtn").onclick=function(){
 
     if(!playing){
 
@@ -312,8 +304,9 @@ document.getElementById("playBtn").onclick=function(event){
         playing=true;
         this.innerHTML="PAUSE";
 
-        enterFullscreen();
-        fullscreen=true;
+        // verberg knoppen
+        document.getElementById("controls").style.opacity="0";
+        document.getElementById("controls").style.pointerEvents="none";
 
     } else {
 
@@ -321,21 +314,21 @@ document.getElementById("playBtn").onclick=function(event){
         playing=false;
         this.innerHTML="PLAY";
 
-        exitFullscreen();
-        fullscreen=false;
+        // toon knoppen
+        document.getElementById("controls").style.opacity="1";
+        document.getElementById("controls").style.pointerEvents="auto";
     }
 };
 
-document.getElementById("nextBtn").onclick=function(event){
-    event.stopPropagation();
+document.getElementById("nextBtn").onclick=function(){
     nextVideo();
 };
 
-/* Klik op exitLayer → fullscreen uit */
-document.getElementById("exitLayer").onclick=function(){
-    if(fullscreen){
-        exitFullscreen();
-        fullscreen=false;
+// klik op scherm → knoppen terug
+document.getElementById("screen").onclick=function(){
+    if(document.getElementById("controls").style.opacity==="0"){
+        document.getElementById("controls").style.opacity="1";
+        document.getElementById("controls").style.pointerEvents="auto";
     }
 };
 
