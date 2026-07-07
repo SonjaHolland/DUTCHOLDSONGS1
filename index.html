@@ -2,204 +2,102 @@
 <html lang="nl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>LIVE AID TV 1985</title>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 html,body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
+    width:100%;height:100%;overflow:hidden;
     background: radial-gradient(circle at center,#303030,#000);
     font-family:Arial,Helvetica,sans-serif;
 }
 
-/* TV KAST */
+/* TV */
 #tv{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    width:97vw;
-    height:97vh;
-    padding:18px;
-    border-radius:18px;
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:97vw;height:97vh;padding:18px;border-radius:18px;
     background:linear-gradient(145deg,#a4a4a4 0%,#5d5d5d 12%,#dadada 24%,#5d5d5d 38%,#2f2f2f 55%,#8d8d8d 70%,#202020 100%);
     box-shadow: inset 0 0 25px rgba(255,255,255,.35), inset 0 0 80px rgba(0,0,0,.7), 0 0 80px black;
 }
 
 /* SCHERM */
 #screen{
-    position:relative;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    border-radius:12px;
-    background:black;
+    position:relative;width:100%;height:100%;overflow:hidden;
+    border-radius:12px;background:black;
     box-shadow: inset 0 0 60px rgba(255,255,255,.08), inset 0 0 200px black;
 }
 
 /* lichte bolling */
 #screen:before{
-    content:"";
-    position:absolute;
-    left:-3%;
-    top:-3%;
-    width:106%;
-    height:106%;
+    content:"";position:absolute;left:-3%;top:-3%;
+    width:106%;height:106%;
     background: radial-gradient(circle,transparent 60%,rgba(255,255,255,.10));
-    pointer-events:none;
-    z-index:20;
+    pointer-events:none;z-index:20;
 }
 
 /* scanlines */
 #screen:after{
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
+    content:"";position:absolute;left:0;top:0;width:100%;height:100%;
     background: repeating-linear-gradient(to bottom,rgba(255,255,255,.02) 0px,rgba(255,255,255,.02) 2px,transparent 3px,transparent 5px);
-    pointer-events:none;
-    z-index:15;
+    pointer-events:none;z-index:15;
 }
 
 /* VIDEO */
 iframe{
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    border:none;
-    z-index:1;
+    position:absolute;left:0;top:0;width:100%;height:100%;
+    border:none;z-index:1;
 }
 
 /* COVER */
 #cover{
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:100%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:black;
-    transition:1.2s;
-    z-index:10;
+    position:absolute;left:0;top:0;width:100%;height:100%;
+    display:flex;justify-content:center;align-items:center;
+    background:black;transition:1.2s;z-index:10;
 }
-
 #cover img{
-    width:58%;
-    max-width:700px;
-    border-radius:12px;
+    width:58%;max-width:700px;border-radius:12px;
     box-shadow:0 0 50px black,0 0 25px rgba(255,255,255,.15);
 }
 
 /* BOVENBALK */
 #topbar{
-    position:absolute;
-    left:0;
-    top:0;
-    width:100%;
-    height:60px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 30px;
-    z-index:30;
-    color:white;
-    font-size:28px;
-    font-weight:bold;
-    letter-spacing:3px;
-    text-shadow:0 0 5px rgba(120,60,60,.4);
+    position:absolute;left:0;top:0;width:100%;height:60px;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:15px 30px;z-index:30;color:white;font-size:28px;
+    font-weight:bold;letter-spacing:3px;
 }
-
-#live{
-    color:#E35335;
-    text-shadow:none;
-}
-
-/* LED */
-#led{
-    position:absolute;
-    right:35px;
-    bottom:20px;
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    background:red;
-    box-shadow:0 0 10px red,0 0 25px red,0 0 40px red;
-    z-index:40;
-}
+#live{color:#E35335;text-shadow:none;}
 
 /* KNOPPEN */
 #controls{
-    position:absolute;
-    bottom:45px;
-    width:100%;
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    z-index:35;
-    transition:.4s;
+    position:absolute;bottom:45px;width:100%;
+    display:flex;justify-content:center;gap:20px;
+    z-index:35;transition:.4s;
 }
-
 button{
-    padding:6px 18px;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-    color:white;
-    border:none;
-    border-radius:6px;
-    background:#6a6a6a;
-    box-shadow:0 2px 0 #444,0 4px 10px rgba(0,0,0,.45);
+    padding:6px 18px;font-size:15px;font-weight:bold;
+    cursor:pointer;color:white;border:none;border-radius:6px;
+    background:#6a6a6a;box-shadow:0 2px 0 #444,0 4px 10px rgba(0,0,0,.45);
     transition:.2s;
 }
-
-button:hover{
-    transform:translateY(-2px);
-    background:#7a7a7a;
-}
-
-button:active{
-    transform:translateY(2px);
-    background:#555;
-}
+button:hover{transform:translateY(-2px);background:#7a7a7a;}
+button:active{transform:translateY(2px);background:#555;}
 
 /* INFO */
 #info{
-    position:absolute;
-    left:25px;
-    bottom:25px;
-    color:#00ff99;
-    font-size:22px;
-    font-family:Courier New;
-    z-index:35;
+    position:absolute;left:25px;bottom:25px;color:#00ff99;
+    font-size:22px;font-family:Courier New;z-index:35;
     text-shadow:0 0 8px #00ff99;
 }
-
 </style>
-
 </head>
 
 <body>
 
 <div id="tv">
-
     <div id="screen">
 
         <!-- Bovenbalk -->
@@ -221,21 +119,16 @@ button:active{
 
         <!-- Knoppen -->
         <div id="controls">
-            <button id="playBtn">PLAY</button>
+            <button id="startStopBtn">START</button>
             <button id="nextBtn">NEXT ▶</button>
         </div>
 
-        <!-- LED -->
-        <div id="led"></div>
-
     </div>
-
 </div>
 
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
-
 let player;
 let playing=false;
 
@@ -267,12 +160,11 @@ function updateInfo(){
 
 function onYouTubeIframeAPIReady(){
     player=new YT.Player("player",{
-        height:"100%",
-        width:"100%",
+        height:"100%",width:"100%",
         videoId:playlist[current].id,
         playerVars:{autoplay:0,controls:0,rel:0,modestbranding:1,fs:0},
         events:{
-            'onReady':function(){ updateInfo(); },
+            'onReady':()=>updateInfo(),
             'onStateChange':onPlayerStateChange
         }
     });
@@ -291,32 +183,42 @@ function nextVideo(){
     updateInfo();
     player.playVideo();
     playing=true;
+    document.getElementById("startStopBtn").innerHTML="STOP";
 }
 
-document.getElementById("playBtn").onclick=function(){
+function goToStartScreen(){
+    playing=false;
+    current=0;
+    player.stopVideo();
+    player.loadVideoById(playlist[0].id);
+    updateInfo();
+
+    document.getElementById("cover").style.display="flex";
+    document.getElementById("cover").style.opacity="1";
+
+    document.getElementById("controls").style.opacity="1";
+    document.getElementById("controls").style.pointerEvents="auto";
+
+    document.getElementById("startStopBtn").innerHTML="START";
+}
+
+document.getElementById("startStopBtn").onclick=function(){
 
     if(!playing){
-
+        // START
         document.getElementById("cover").style.opacity="0";
         setTimeout(()=>{ document.getElementById("cover").style.display="none"; },1200);
 
         player.playVideo();
         playing=true;
-        this.innerHTML="PAUSE";
+        this.innerHTML="STOP";
 
-        // verberg knoppen
         document.getElementById("controls").style.opacity="0";
         document.getElementById("controls").style.pointerEvents="none";
 
     } else {
-
-        player.pauseVideo();
-        playing=false;
-        this.innerHTML="PLAY";
-
-        // toon knoppen
-        document.getElementById("controls").style.opacity="1";
-        document.getElementById("controls").style.pointerEvents="auto";
+        // STOP → terug naar beginscherm
+        goToStartScreen();
     }
 };
 
@@ -331,8 +233,8 @@ document.getElementById("screen").onclick=function(){
         document.getElementById("controls").style.pointerEvents="auto";
     }
 };
-
 </script>
 
 </body>
 </html>
+
