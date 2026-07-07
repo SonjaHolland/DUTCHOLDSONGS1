@@ -17,308 +17,144 @@
 }
 
 html,body{
-
     width:100%;
     height:100%;
     overflow:hidden;
-
-    background:
-    radial-gradient(circle at center,#303030,#000);
-
+    background: radial-gradient(circle at center,#303030,#000);
     font-family:Arial,Helvetica,sans-serif;
-
 }
 
-/* ===========================
-        TV KAST
-=========================== */
-
+/* TV KAST */
 #tv{
-
     position:absolute;
-
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
-
     width:97vw;
     height:97vh;
-
     padding:35px;
-
     border-radius:18px;
-
-    background:
-    linear-gradient(
-    145deg,
-    #a4a4a4 0%,
-    #5d5d5d 12%,
-    #dadada 24%,
-    #5d5d5d 38%,
-    #2f2f2f 55%,
-    #8d8d8d 70%,
-    #202020 100%);
-
-    box-shadow:
-
-    inset 0 0 25px rgba(255,255,255,.35),
-
-    inset 0 0 80px rgba(0,0,0,.7),
-
-    0 0 80px black;
-
+    background:linear-gradient(145deg,#a4a4a4 0%,#5d5d5d 12%,#dadada 24%,#5d5d5d 38%,#2f2f2f 55%,#8d8d8d 70%,#202020 100%);
+    box-shadow: inset 0 0 25px rgba(255,255,255,.35), inset 0 0 80px rgba(0,0,0,.7), 0 0 80px black;
 }
 
-/* ===========================
-        SCHERM
-=========================== */
-
+/* SCHERM */
 #screen{
-
     position:relative;
-
     width:100%;
     height:100%;
-
     overflow:hidden;
-
     border-radius:12px;
-
     background:black;
-
-    box-shadow:
-
-    inset 0 0 60px rgba(255,255,255,.08),
-
-    inset 0 0 200px black;
-
+    box-shadow: inset 0 0 60px rgba(255,255,255,.08), inset 0 0 200px black;
 }
 
 /* lichte bolling */
-
 #screen:before{
-
-content:"";
-
-position:absolute;
-
-left:-3%;
-top:-3%;
-
-width:106%;
-height:106%;
-
-background:
-
-radial-gradient(circle,
-transparent 60%,
-rgba(255,255,255,.10));
-
-pointer-events:none;
-
-z-index:20;
-
+    content:"";
+    position:absolute;
+    left:-3%;
+    top:-3%;
+    width:106%;
+    height:106%;
+    background: radial-gradient(circle,transparent 60%,rgba(255,255,255,.10));
+    pointer-events:none;
+    z-index:20;
 }
 
 /* scanlines */
-
 #screen:after{
-
-content:"";
-
-position:absolute;
-
-left:0;
-top:0;
-
-width:100%;
-height:100%;
-
-background:
-
-repeating-linear-gradient(
-
-to bottom,
-
-rgba(255,255,255,.02) 0px,
-
-rgba(255,255,255,.02) 2px,
-
-transparent 3px,
-
-transparent 5px
-
-);
-
-pointer-events:none;
-
-z-index:15;
-
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background: repeating-linear-gradient(to bottom,rgba(255,255,255,.02) 0px,rgba(255,255,255,.02) 2px,transparent 3px,transparent 5px);
+    pointer-events:none;
+    z-index:15;
 }
 
-/* ===========================
-        VIDEO
-=========================== */
-
+/* VIDEO */
 iframe{
-
-position:absolute;
-
-left:0;
-top:0;
-
-width:100%;
-height:100%;
-
-border:none;
-
-z-index:1;
-
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    border:none;
+    z-index:1;
 }
 
-/* ===========================
-      LIVE AID COVER
-=========================== */
-
+/* COVER */
 #cover{
-
-position:absolute;
-
-left:0;
-top:0;
-
-width:100%;
-height:100%;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:black;
-
-transition:1.2s;
-
-z-index:10;
-
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:black;
+    transition:1.2s;
+    z-index:10;
 }
 
 #cover img{
-
-width:58%;
-
-max-width:700px;
-
-border-radius:12px;
-
-box-shadow:
-
-0 0 50px black,
-
-0 0 25px rgba(255,255,255,.15);
-
+    width:58%;
+    max-width:700px;
+    border-radius:12px;
+    box-shadow:0 0 50px black,0 0 25px rgba(255,255,255,.15);
 }
 
-/* ===========================
-      BOVENBALK
-=========================== */
-
+/* BOVENBALK */
 #topbar{
-
-position:absolute;
-
-left:0;
-top:0;
-
-width:100%;
-height:60px;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:15px 30px;
-
-z-index:30;
-
-color:white;
-
-font-size:28px;
-
-font-weight:bold;
-
-letter-spacing:3px;
-
-text-shadow:0 0 5px rgba(120,60,60,.4);
-
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 30px;
+    z-index:30;
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:3px;
+    text-shadow:0 0 5px rgba(120,60,60,.4);
 }
 
 #live{
-
-color:#E35335;
-
-text-shadow:none;
-
+    color:#E35335;
+    text-shadow:none;
 }
 
-/* ===========================
-      POWER LED
-=========================== */
-
+/* LED */
 #led{
-
-position:absolute;
-
-right:35px;
-
-bottom:20px;
-
-width:18px;
-
-height:18px;
-
-border-radius:50%;
-
-background:red;
-
-box-shadow:
-
-0 0 10px red,
-
-0 0 25px red,
-
-0 0 40px red;
-
-z-index:40;
-
+    position:absolute;
+    right:35px;
+    bottom:20px;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:red;
+    box-shadow:0 0 10px red,0 0 25px red,0 0 40px red;
+    z-index:40;
 }
 
-/* ===========================
-      ONDERSTE BEDIENING
-=========================== */
-
+/* KNOPPEN */
 #controls{
-
-position:absolute;
-
-bottom:45px;
-
-width:100%;
-
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-gap:18px;
-
-z-index:35;
-
+    position:absolute;
+    bottom:45px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    z-index:35;
+    transition:.4s;
 }
 
 button{
@@ -326,16 +162,11 @@ button{
     font-size:15px;
     font-weight:bold;
     cursor:pointer;
-
-    color:white;                 /* witte letters */
+    color:white;
     border:none;
     border-radius:6px;
-
-    background:#6a6a6a;          /* grijs */
-    box-shadow:
-        0 2px 0 #444,
-        0 4px 10px rgba(0,0,0,.45);
-
+    background:#6a6a6a;
+    box-shadow:0 2px 0 #444,0 4px 10px rgba(0,0,0,.45);
     transition:.2s;
 }
 
@@ -349,41 +180,19 @@ button:active{
     background:#555;
 }
 
-
-#row{
-
-display:flex;
-
-gap:10px;
-
-}
-
-/* ===========================
-       INFO VAK
-=========================== */
-
+/* INFO */
 #info{
-
-position:absolute;
-
-left:25px;
-
-bottom:25px;
-
-color:#00ff99;
-
-font-size:22px;
-
-font-family:Courier New;
-
-z-index:35;
-
-text-shadow:
-
-0 0 8px #00ff99;
-
+    position:absolute;
+    left:25px;
+    bottom:25px;
+    color:#00ff99;
+    font-size:22px;
+    font-family:Courier New;
+    z-index:35;
+    text-shadow:0 0 8px #00ff99;
 }
-    </style>
+
+</style>
 
 </head>
 
@@ -395,12 +204,12 @@ text-shadow:
 
         <!-- Bovenbalk -->
         <div id="topbar">
-            <div><span id="live">OLD DUTCH SONGS</span> </div>
+            <div><span id="live">OLD DUTCH SONGS</span></div>
             <div id="counter">1 / 16</div>
         </div>
 
-        <!-- Albumhoes -->
-    <div id="cover">
+        <!-- Cover -->
+        <div id="cover">
             <img src="OLD100.jpg" alt="OLD100">
         </div>
 
@@ -408,21 +217,12 @@ text-shadow:
         <div id="player"></div>
 
         <!-- Info -->
-        <div id="info">
-            Wim Sonneveld - Tearoom tango
-        </div>
+        <div id="info">Wim Sonneveld - Tearoom tango</div>
 
         <!-- Knoppen -->
         <div id="controls">
-
-    <button id="playBtn">PLAY</button>
-
-    <div id="row">
-        <button id="nextBtn">NEXT ▶</button>
-    </div>
-
-            </div>
-
+            <button id="playBtn">PLAY</button>
+            <button id="nextBtn">NEXT ▶</button>
         </div>
 
         <!-- LED -->
@@ -437,233 +237,100 @@ text-shadow:
 <script>
 
 let player;
-
 let playing=false;
 
 const playlist=[
-
-{
-id:"ux55xgGqwHk",
-title:"Tearoom tango"
-},
-
-{
-id:"GiF8YZi3OPg",
-title:"Zij Kon Het Lonken Niet Laten"
-},
-
-{
-id:"CTrzuKEimA8",
-title:"Het Dorp"
-},
-
-{
-id:"QjpELXud588",
-title:"Gerrit"
-},
-
-{
-id:"-ZWd3BF8T2U",
-title:"Margootje"
-},
-
-{
-id:"hf6-cP_1JwE",
-title:"omdat ik zoveel van je hou"
-},
-
-{
-id:"NCkbjNgPX5g",
-title:"In een Rijtuigie"
-},
-
-{
-id:"TWs3wmYwxEA",
-title:"Op een mooie pinksterdag"
-},
-
-{
-id:"XRcyGdDrnbQ",
-title:"De kat van ome Willem"
-},
-
-{
-id:"U_ARWZPkGts",
-title:"Bloody Mary"
-},
-
-{
-id:"bxwxPZ18vy4",
-title:"Een reisje langs de Rijn"
-},
-
-{
-id:"h7pIIvitprY",
-title:"naar de kermis"
-},
-
-{
-id:"tlonKiAKcEw",
-title:"Droomland"
-},
-
-{
-id:"14o8vL5OJk0",
-title:"Laat Me"
-},
-
-{
-id:"n-gb5XN1Z3c",
-title:"Pastorale"
-},
-
-{
-id:"2OKMSTwyOzs",
-title:"Twee Motten"
-}
-
+{id:"ux55xgGqwHk",title:"Tearoom tango"},
+{id:"GiF8YZi3OPg",title:"Zij Kon Het Lonken Niet Laten"},
+{id:"CTrzuKEimA8",title:"Het Dorp"},
+{id:"QjpELXud588",title:"Gerrit"},
+{id:"-ZWd3BF8T2U",title:"Margootje"},
+{id:"hf6-cP_1JwE",title:"omdat ik zoveel van je hou"},
+{id:"NCkbjNgPX5g",title:"In een Rijtuigie"},
+{id:"TWs3wmYwxEA",title:"Op een mooie pinksterdag"},
+{id:"XRcyGdDrnbQ",title:"De kat van ome Willem"},
+{id:"U_ARWZPkGts",title:"Bloody Mary"},
+{id:"bxwxPZ18vy4",title:"Een reisje langs de Rijn"},
+{id:"h7pIIvitprY",title:"naar de kermis"},
+{id:"tlonKiAKcEw",title:"Droomland"},
+{id:"14o8vL5OJk0",title:"Laat Me"},
+{id:"n-gb5XN1Z3c",title:"Pastorale"},
+{id:"2OKMSTwyOzs",title:"Twee Motten"}
 ];
 
 let current=0;
 
 function updateInfo(){
-
-document.getElementById("info").innerHTML=
-playlist[current].title;
-
-document.getElementById("counter").innerHTML=
-(current+1)+" / "+playlist.length;
-
+    document.getElementById("info").innerHTML = playlist[current].title;
+    document.getElementById("counter").innerHTML = (current+1)+" / "+playlist.length;
 }
 
 function onYouTubeIframeAPIReady(){
-
-player=new YT.Player("player",{
-
-height:"100%",
-
-width:"100%",
-
-videoId:playlist[current].id,
-
-playerVars:{
-
-autoplay:0,
-
-controls:0,
-
-rel:0,
-
-modestbranding:1,
-
-fs:0
-
-},
-
-events:{
-
-'onReady':function(){
-
-updateInfo();
-
-},
-
-'onStateChange':onPlayerStateChange
-
-}
-
-});
-
+    player=new YT.Player("player",{
+        height:"100%",
+        width:"100%",
+        videoId:playlist[current].id,
+        playerVars:{autoplay:0,controls:0,rel:0,modestbranding:1,fs:0},
+        events:{
+            'onReady':function(){ updateInfo(); },
+            'onStateChange':onPlayerStateChange
+        }
+    });
 }
 
 function onPlayerStateChange(e){
-
-if(e.data==YT.PlayerState.ENDED){
-
-nextVideo();
-
-}
-
+    if(e.data==YT.PlayerState.ENDED){
+        nextVideo();
+    }
 }
 
 function nextVideo(){
-
-current++;
-
-if(current>=playlist.length){
-
-current=0;
-
-}
-
-player.loadVideoById(playlist[current].id);
-
-updateInfo();
-
-player.playVideo();
-
-playing=true;
-
-}
-
-function previousVideo(){
-
-current--;
-
-if(current<0){
-
-current=playlist.length-1;
-
-}
-
-player.loadVideoById(playlist[current].id);
-
-updateInfo();
-
-player.playVideo();
-
-playing=true;
-
+    current++;
+    if(current>=playlist.length){ current=0; }
+    player.loadVideoById(playlist[current].id);
+    updateInfo();
+    player.playVideo();
+    playing=true;
 }
 
 document.getElementById("playBtn").onclick=function(){
 
-if(!playing){
+    if(!playing){
 
-document.getElementById("cover").style.opacity="0";
+        document.getElementById("cover").style.opacity="0";
+        setTimeout(()=>{ document.getElementById("cover").style.display="none"; },1200);
 
-setTimeout(function(){
+        player.playVideo();
+        playing=true;
+        this.innerHTML="PAUSE";
 
-document.getElementById("cover").style.display="none";
+        // verberg knoppen
+        document.getElementById("controls").style.opacity="0";
+        document.getElementById("controls").style.pointerEvents="none";
 
-},1200);
+    } else {
 
-player.playVideo();
+        player.pauseVideo();
+        playing=false;
+        this.innerHTML="PLAY";
 
-playing=true;
-
-this.innerHTML="PAUSE";
-
-}
-
-else{
-
-player.pauseVideo();
-
-playing=false;
-
-this.innerHTML="PLAY";
-
-}
-
+        // toon knoppen
+        document.getElementById("controls").style.opacity="1";
+        document.getElementById("controls").style.pointerEvents="auto";
+    }
 };
 
 document.getElementById("nextBtn").onclick=function(){
-
-nextVideo();
-
+    nextVideo();
 };
 
+// klik op scherm → knoppen terug
+document.getElementById("screen").onclick=function(){
+    if(document.getElementById("controls").style.opacity==="0"){
+        document.getElementById("controls").style.opacity="1";
+        document.getElementById("controls").style.pointerEvents="auto";
+    }
+};
 
 </script>
 
