@@ -322,50 +322,33 @@ z-index:35;
 }
 
 button{
+    padding:6px 18px;
+    font-size:15px;
+    font-weight:bold;
+    cursor:pointer;
 
-padding:6px 18px;          /* ongeveer de helft kleiner */
+    color:white;                 /* witte letters */
+    border:none;
+    border-radius:6px;
 
-font-size:15px;
+    background:#6a6a6a;          /* grijs */
+    box-shadow:
+        0 2px 0 #444,
+        0 4px 10px rgba(0,0,0,.45);
 
-font-weight:bold;
-
-cursor:pointer;
-
-color:#f5f5f5;
-
-border:none;
-
-border-radius:6px;
-
-background:
-linear-gradient(
-#9b5a5a,
-#6a3535);
-
-box-shadow:
-0 2px 0 #452222,
-0 4px 10px rgba(0,0,0,.45);
-
-transition:.2s;
-
-
+    transition:.2s;
 }
 
 button:hover{
-
-transform:translateY(-2px);
-
+    transform:translateY(-2px);
+    background:#7a7a7a;
 }
 
 button:active{
-
-transform:translateY(2px);
-
-box-shadow:
-
-0 2px 0 #4d0000;
-
+    transform:translateY(2px);
+    background:#555;
 }
+
 
 #row{
 
@@ -432,11 +415,12 @@ text-shadow:
         <!-- Knoppen -->
         <div id="controls">
 
-            <button id="playBtn">PLAY</button>
+    <button id="playBtn">PLAY</button>
 
-            <div id="row">
-                <button id="prevBtn">◀ PREVIOUS</button>
-                <button id="nextBtn">NEXT ▶</button>
+    <div id="row">
+        <button id="nextBtn">NEXT ▶</button>
+    </div>
+
             </div>
 
         </div>
@@ -680,11 +664,6 @@ nextVideo();
 
 };
 
-document.getElementById("prevBtn").onclick=function(){
-
-previousVideo();
-
-};
 
 </script>
 
