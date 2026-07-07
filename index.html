@@ -154,7 +154,7 @@ iframe{
     justify-content:center;
     gap:20px;
     z-index:35;
-    transition:.4s;
+    transition:.3s;
 }
 
 button{
@@ -192,21 +192,10 @@ button:active{
     text-shadow:0 0 8px #00ff99;
 }
 
-/* FULLSCREEN-MODUS */
-/* Verberg ALLE directe kinderen van #screen behalve #player */
-.fullscreen-hide > *:not(#player){
-    opacity:0 !important;
-    pointer-events:none !important;
-}
-
-/* Zorg dat #player zelf zichtbaar blijft */
-.fullscreen-hide #player{
-    opacity:1 !important;
-    pointer-events:auto !important;
-}
-
-.fullscreen-hide{
-    background:black !important;
+/* VERBERG-KLASSE VOOR ELEMENTEN */
+.hidden{
+    opacity:0;
+    pointer-events:none;
 }
 
 </style>
@@ -311,17 +300,26 @@ function nextVideo(){
     playing=true;
 }
 
+/* Alles verbergen behalve de video */
 function enterFullscreen(){
-    document.getElementById("screen").classList.add("fullscreen-hide");
+    document.getElementById("topbar").classList.add("hidden");
+    document.getElementById("info").classList.add("hidden");
+    document.getElementById("controls").classList.add("hidden");
+    document.getElementById("cover").classList.add("hidden");
+    document.getElementById("led").classList.add("hidden");
 }
 
+/* Alles weer tonen */
 function exitFullscreen(){
-    document.getElementById("screen").classList.remove("fullscreen-hide");
+    document.getElementById("topbar").classList.remove("hidden");
+    document.getElementById("info").classList.remove("hidden");
+    document.getElementById("controls").classList.remove("hidden");
+    document.getElementById("cover").classList.remove("hidden");
+    document.getElementById("led").classList.remove("hidden");
 }
 
 document.getElementById("playBtn").onclick=function(event){
 
-    // voorkom dat klik op PLAY direct de screen-click triggert
     event.stopPropagation();
 
     if(!playing){
@@ -364,3 +362,4 @@ document.getElementById("screen").onclick=function(){
 
 </body>
 </html>
+
